@@ -5,6 +5,7 @@ import { BooksProvider } from './BooksContext';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import BookDetails from './components/BookDetails';
 import NotFound from './components/NotFound';
+import SecretBook from './components/SecretBook';
 
 // The asterisk(*) implies in the path apart from any route provided below, if there's none matching, it'll be routed.
 
@@ -17,6 +18,8 @@ function App() {
           <Route path='/books' element={<Navigate to='/' />}></Route>
           <Route path='/books/:bookId' element={<BookDetails></BookDetails>}></Route>
           <Route path='*' element={<NotFound></NotFound>}></Route>
+          <Route path='/secret' element={<isAuthenticated Component={<SecretBook></SecretBook>}>
+          </isAuthenticated>}></Route>
         </Routes>
       </Router>
     </BooksProvider>
